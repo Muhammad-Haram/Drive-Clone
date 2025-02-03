@@ -6,6 +6,7 @@ const serviceAccount = require("../supramax-48729-firebase-adminsdk-gtx7k-3e9d54
 const storage = firebaseStorage({
   credentials: firebase.credential.cert(serviceAccount),
   bucketName: "supramax-48729.appspot.com",
+  unique: true,
 });
 
 const uploads = multer({ storage: storage });

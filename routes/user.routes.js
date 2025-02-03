@@ -76,8 +76,15 @@ router.post(
       });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    res.cookie("token", token, { httpOnly: true });
+    const token = jwt.sign(
+      {
+        userId: user._id,
+        email: user.email,
+        username: user.username,
+      },
+      process.env.JWT_SECRET
+    );
+    res.cookie("token", token);
     res.send("Logged in successfully");
   }
 );
